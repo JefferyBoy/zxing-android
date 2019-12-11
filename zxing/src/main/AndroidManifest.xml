@@ -1,0 +1,15 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.handset.zxing" >
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+
+    <application>
+        <activity android:name="com.google.zxing.client.android.activity.AliCaptureActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.google.zxing.client.android.activity.DefaultCaptureActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.google.zxing.client.android.activity.WeChatCaptureActivity" android:screenOrientation="portrait"/>
+    </application>
+</manifest>
+
+
