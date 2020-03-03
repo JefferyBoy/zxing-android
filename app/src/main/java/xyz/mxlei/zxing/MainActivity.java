@@ -69,6 +69,26 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void clickCode39(View view){
+        Bitmap bitmap = new BarCodeBuilder(editText.getText().toString().trim())
+                .setFormat(BarcodeFormat.CODE_39)
+                .setStandardFormat(true)
+                .build();
+        if (bitmap != null) {
+            Log.d(TAG, "Zxing生成条码 宽度 = " + bitmap.getWidth() + "\t高度 = " + bitmap.getHeight());
+            imageView.setImageBitmap(bitmap);
+        }
+    }
+    public void clickCode128(View view){
+        Bitmap bitmap = new BarCodeBuilder(editText.getText().toString().trim())
+                .setFormat(BarcodeFormat.CODE_128)
+                .setStandardFormat(true)
+                .build();
+        if (bitmap != null) {
+            Log.d(TAG, "Zxing生成条码 宽度 = " + bitmap.getWidth() + "\t高度 = " + bitmap.getHeight());
+            imageView.setImageBitmap(bitmap);
+        }
+    }
     public void clickQRCode(View view) {
         Bitmap bitmap = new QRCodeBuilder(editText.getText().toString().trim())
                 .setLogoBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.logo))

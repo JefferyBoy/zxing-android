@@ -34,37 +34,41 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Zxing生成EAN13"
-        android:layout_marginTop="20dp"
+        android:text="生成EAN13（12个数字）"
         android:onClick="clickEAN13ByZxing"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ZXING生成EAN8"
-        android:layout_marginTop="20dp"
+        android:text="生成EAN8（7个数字）"
         android:onClick="clickEAN8"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ZXING生成UPC-A"
-        android:layout_marginTop="20dp"
+        android:text="生成UPC-A（11个数字）"
         android:onClick="clickUPC_A"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ZXING生成ITF-14"
-        android:layout_marginTop="20dp"
+        android:text="生成ITF-14（13个数字）"
         android:onClick="clickITF_14"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ZXING生成二维码"
-        android:layout_marginTop="20dp"
+        android:text="生成CODE39（数字）"
+        android:onClick="clickCode39"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="生成CODE128（数字字母）"
+        android:onClick="clickCode128"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="生成二维码"
         android:onClick="clickQRCode"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="获取宽和高"
-        android:layout_marginTop="20dp"
         android:onClick="clickGetWidth"/>
 </LinearLayout>
