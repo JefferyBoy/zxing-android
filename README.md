@@ -1,5 +1,17 @@
 # Zxing Android SDK
-根据Google官网的zxing sdk，添加了仿微信、支付宝的条码扫描框，同时提供了ZxingUtils.java封装了生成条码、二维码的功能，二维码可添加logo等。
+根据Google官网的zxing sdk，添加了仿微信、支付宝的条码扫描框，同时提供了ZxingUtils.java封装了生成条码、二维码的功能，二维码可添加logo等。可以生成标准的商品条码，自动计算校验位，设置显示文本位置等。
+
+## 
+
+可以设置文本显示位置（上方、下方），对其方式（左、中、右）
+
+![UTOOLS1583217926225.png](http://yanxuan.nosdn.127.net/27dd5181bf347ecb8f050db8d394b80e.png)
+
+支持生成标准商品格式的条码
+
+![UTOOLS1583218015230.png](http://yanxuan.nosdn.127.net/813075addf832e935cae5fc48435cf5f.png)
+
+
 
 ## 1. 扫描二维码和条码
 
@@ -29,39 +41,20 @@ protected void onActivityResult(int requestCode, int resultCode, @Nullable Inten
 
 ## 2. 生成二维码和条码
 
-直接调用ZxingUtils中提供的静态方法可生成二维码和条码，以Bitmap对象返回。
+直接调用提供Builder类可生成二维码和条码，以Bitmap对象返回。
 
 ```java
-public class ZxingUtils {
-        public static final int TEXT_LOCATION_NONE = 1;
-        public static final int TEXT_LOCATION_TOP = 2;
-        public static final int TEXT_LOCATION_BOTTOM = 3;
-        public static final int TEXT_ALIGN_LEFT = 1;
-        public static final int TEXT_ALIGN_CENTER = 2;
-        public static final int TEXT_ALIGN_RIGHT = 3;
-        
-        /**
-         * 生成QRCode（二维码）
-         * @param contentStr    内容
-         * @param logo          logo图片
-         * @return 成功返回bitmap或失败返回null
-         * @throws WriterException
-         */
-        public static Bitmap createQRCode(String contentStr, Bitmap logo) throws WriterException {
-
-        }
-        
-     /**
-         * 生成条码
-         * @param contentStr    内容
-         * @param format        格式
-         * @param textAlignment 文本对齐 {@link #TEXT_ALIGN_LEFT} {@link #TEXT_ALIGN_CENTER} {@link #TEXT_ALIGN_RIGHT}
-         * @param textLocation  文本位置 {@link #TEXT_LOCATION_TOP} {@link #TEXT_LOCATION_BOTTOM} {@link #TEXT_LOCATION_NONE}
-         * @return 成功返回bitmap或失败返回null
-         * @throws WriterException
-         */
-        public static Bitmap createBarCode(String contentStr, BarcodeFormat format, int textLocation, int textAlignment) throws WriterException {
-            
-        }
+public void test(){
+    //生成条码
+ Bitmap bitmap = new BarCodeBuilder(editText.getText().toString().trim())
+                .setFormat(BarcodeFormat.EAN_8)
+                .setStandardFormat(true)
+                .build();
 }
+public void test2(){
+    //生成二维码
+     Bitmap bitmap = new QRCodeBuilder(editText.getText().toString().trim())
+                .build();
+}
+
 ```
