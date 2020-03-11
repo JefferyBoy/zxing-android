@@ -55,6 +55,11 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="生成UPC-E（7个数字，0或1开头）"
+                android:onClick="clickUPC_E"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="生成ITF-14（13个数字）"
                 android:onClick="clickITF_14"/>
             <Button

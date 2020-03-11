@@ -21,6 +21,7 @@ import static com.google.zxing.BarcodeFormat.EAN_13;
 import static com.google.zxing.BarcodeFormat.EAN_8;
 import static com.google.zxing.BarcodeFormat.ITF;
 import static com.google.zxing.BarcodeFormat.UPC_A;
+import static com.google.zxing.BarcodeFormat.UPC_E;
 
 /**
  * @author mxlei
@@ -68,9 +69,11 @@ public class BarCodeBuilder {
                     case UPC_A:
                         dstBitmap = transformer.UPC_A(bitmap, content);
                         break;
+                    case UPC_E:
+                        dstBitmap = transformer.UPC_E(bitmap, content);
+                        break;
                     default:
                         dstBitmap = addTextToBitmap(bitmap);
-                        ;
                 }
             } else {
                 dstBitmap = addTextToBitmap(bitmap);
@@ -129,8 +132,8 @@ public class BarCodeBuilder {
                     break;
             }
             if (textLocation != TEXT_LOCATION_NONE) {
-                if (format == EAN_8 || format == EAN_13 || format == UPC_A || format == ITF) {
-                    canvas.drawText(content + BarCodeVerifier.getCheckBit(content, format), textX, textY, paint);
+                if (format == EAN_8 || format == EAN_13 || format == UPC_A || format == UPC_E || format == ITF) {
+                    canvas.drawText(content + BarCodeVerifier.getCheckBit(content), textX, textY, paint);
                 } else {
                     canvas.drawText(content, textX, textY, paint);
                 }
@@ -178,7 +181,7 @@ public class BarCodeBuilder {
         // 生成二维矩阵,编码时指定大小,不要生成了图片以后再进行缩放,这样会模糊导致识别失败
         String encodeContent = content;
         if (format == ITF) {
-            encodeContent = content + BarCodeVerifier.getCheckBit(content, format);
+            encodeContent = content + BarCodeVerifier.getCheckBit(content);
         }
         BitMatrix matrix = new MultiFormatWriter().encode(encodeContent, format, 500, 300, hints);
         int width = matrix.getWidth();

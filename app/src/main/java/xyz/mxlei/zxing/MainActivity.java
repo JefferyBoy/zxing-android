@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     public void clickEAN8(View view) {
         Bitmap bitmap = new BarCodeBuilder(editText.getText().toString().trim())
                 .setFormat(BarcodeFormat.EAN_8)
-                .setStandardFormat(true)
+                .setStandardFormat(false)
                 .build();
         if (bitmap != null) {
             Log.d(TAG, "Zxing生成条码 宽度 = " + bitmap.getWidth() + "\t高度 = " + bitmap.getHeight());
@@ -50,6 +50,17 @@ public class MainActivity extends AppCompatActivity {
     public void clickUPC_A(View view) {
         Bitmap bitmap = new BarCodeBuilder(editText.getText().toString().trim())
                 .setFormat(BarcodeFormat.UPC_A)
+                .setStandardFormat(true)
+                .build();
+        if (bitmap != null) {
+            Log.d(TAG, "Zxing生成条码 宽度 = " + bitmap.getWidth() + "\t高度 = " + bitmap.getHeight());
+            imageView.setImageBitmap(bitmap);
+        }
+    }
+
+    public void clickUPC_E(View view) {
+        Bitmap bitmap = new BarCodeBuilder(editText.getText().toString().trim())
+                .setFormat(BarcodeFormat.UPC_E)
                 .setStandardFormat(true)
                 .build();
         if (bitmap != null) {

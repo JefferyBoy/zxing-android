@@ -1,11 +1,7 @@
 package xyz.mxlei.zxing;
 
 import com.google.zxing.BarcodeFormat;
-
-import static com.google.zxing.BarcodeFormat.EAN_13;
-import static com.google.zxing.BarcodeFormat.EAN_8;
-import static com.google.zxing.BarcodeFormat.ITF;
-import static com.google.zxing.BarcodeFormat.UPC_A;
+import com.google.zxing.FormatException;
 
 /**
  * @author mxlei
@@ -14,6 +10,7 @@ import static com.google.zxing.BarcodeFormat.UPC_A;
 public class BarCodeVerifier {
 
     public static final String CONTENT_CODE_39 = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ-. $/+%";
+
     /**
      * 检查条码内容的格式是否正确
      */
@@ -40,6 +37,15 @@ public class BarCodeVerifier {
                 } else {
                     return false;
                 }
+            case UPC_E:
+                if (isAllNumber(content) && content.length() == 7) {
+                    char ch = content.charAt(0);
+                    if (ch == '0' || ch == '1') {
+                        return true;
+                    }
+                } else {
+                    return false;
+                }
             case ITF:
                 if (isAllNumber(content) && content.length() == 13) {
                     return true;
@@ -49,7 +55,7 @@ public class BarCodeVerifier {
             case CODE_39:
                 //共43个字符：26个大写字母、10个数字0-9，7特殊符号：-. $/+%
                 for (char ch : content.toCharArray()) {
-                    if(!CONTENT_CODE_39.contains(String.valueOf(ch))){
+                    if (!CONTENT_CODE_39.contains(String.valueOf(ch))) {
                         return false;
                     }
                 }
@@ -73,35 +79,35 @@ public class BarCodeVerifier {
      */
     public static String getFullCode(String content, BarcodeFormat format) {
         if (verifyBarcode(content, format)) {
-            int checkBit = getCheckBit(content, format);
+            int checkBit = getCheckBit(content);
             return content + checkBit;
         }
         return null;
     }
 
     /**
-     * 获取条码的校验位
+     * 获取EAN、UPC条码的校验位
      */
-    public static int getCheckBit(String content, BarcodeFormat format) {
+    public static int getCheckBit(String content) {
         try {
-            char[] array = content.toCharArray();
-            double ou = 0;
-            double ji = 0;
-            for (int i = 1; i <= array.length; i++) {
-                if (i % 2 == 0) {
-                    ou += array[i - 1] - '0';
-                } else {
-                    ji += array[i - 1] - '0';
+            int length = content.length();
+            int sum = 0;
+            for (int i = length - 1; i >= 0; i -= 2) {
+                int digit = content.charAt(i) - '0';
+                if (digit < 0 || digit > 9) {
+                    throw FormatException.getFormatInstance();
                 }
+                sum += digit;
             }
-            if (format == EAN_8 || format == UPC_A || format == ITF) {
-                ji = ji * 3;
-            } else if (format == EAN_13) {
-                ou = ou * 3;
+            sum *= 3;
+            for (int i = length - 2; i >= 0; i -= 2) {
+                int digit = content.charAt(i) - '0';
+                if (digit < 0 || digit > 9) {
+                    throw FormatException.getFormatInstance();
+                }
+                sum += digit;
             }
-            double sum = ji + ou;
-            int check = (10 - (int) sum % 10) % 10;
-            return check;
+            return (1000 - sum) % 10;
         } catch (Exception e) {
             e.printStackTrace();
             return 0;
