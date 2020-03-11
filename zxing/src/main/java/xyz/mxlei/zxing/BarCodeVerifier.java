@@ -13,6 +13,7 @@ import static com.google.zxing.BarcodeFormat.UPC_A;
  */
 public class BarCodeVerifier {
 
+    public static final String CONTENT_CODE_39 = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ-. $/+%";
     /**
      * 检查条码内容的格式是否正确
      */
@@ -46,14 +47,17 @@ public class BarCodeVerifier {
                     return false;
                 }
             case CODE_39:
-                if (isAllNumber(content) && content.length() > 0) {
-                    return true;
-                } else {
-                    return false;
-                }
-            case CODE_128:
+                //共43个字符：26个大写字母、10个数字0-9，7特殊符号：-. $/+%
                 for (char ch : content.toCharArray()) {
-                    if (ch < 32 || ch > 126) {
+                    if(!CONTENT_CODE_39.contains(String.valueOf(ch))){
+                        return false;
+                    }
+                }
+                return true;
+            case CODE_128:
+                //ASCII 0-127共128个字符
+                for (char ch : content.toCharArray()) {
+                    if (ch < 0 || ch > 127) {
                         return false;
                     }
                 }

@@ -21,54 +21,64 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:background="#989898">
         <ImageView
             android:id="@+id/image_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#989898"
-            android:layout_marginTop="100dp"/>
+            android:background="#989898" />
     </FrameLayout>
 
-    <Button
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="生成EAN13（12个数字）"
-        android:onClick="clickEAN13ByZxing"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="生成EAN8（7个数字）"
-        android:onClick="clickEAN8"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="生成UPC-A（11个数字）"
-        android:onClick="clickUPC_A"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="生成ITF-14（13个数字）"
-        android:onClick="clickITF_14"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="生成CODE39（数字）"
-        android:onClick="clickCode39"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="生成CODE128（数字字母）"
-        android:onClick="clickCode128"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="生成二维码"
-        android:onClick="clickQRCode"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="获取宽和高"
-        android:onClick="clickGetWidth"/>
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="生成EAN13（12个数字）"
+                android:onClick="clickEAN13ByZxing"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="生成EAN8（7个数字）"
+                android:onClick="clickEAN8"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="生成UPC-A（11个数字）"
+                android:onClick="clickUPC_A"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="生成ITF-14（13个数字）"
+                android:onClick="clickITF_14"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="生成CODE39（数字）"
+                android:onClick="clickCode39"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="生成CODE128（数字字母）"
+                android:onClick="clickCode128"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="生成二维码"
+                android:onClick="clickQRCode"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="获取宽和高"
+                android:onClick="clickGetWidth"/>
+        </LinearLayout>
+    </ScrollView>
+
+
 </LinearLayout>
