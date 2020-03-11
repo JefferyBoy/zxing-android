@@ -60,12 +60,12 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="生成CODE39（数字）"
+                android:text="生成CODE39（数字、大写字母、-.$/+%、空格）"
                 android:onClick="clickCode39"/>
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="生成CODE128（数字字母）"
+                android:text="生成CODE128（ASCII码 0-127）"
                 android:onClick="clickCode128"/>
             <Button
                 android:layout_width="match_parent"
