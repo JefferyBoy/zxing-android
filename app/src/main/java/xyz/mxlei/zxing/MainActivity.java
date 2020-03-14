@@ -39,7 +39,9 @@ public class MainActivity extends AppCompatActivity {
     public void clickEAN8(View view) {
         Bitmap bitmap = new BarCodeBuilder(editText.getText().toString().trim())
                 .setFormat(BarcodeFormat.EAN_8)
-                .setStandardFormat(false)
+                .setTextLocation(BarCodeBuilder.TEXT_LOCATION_BOTTOM)
+                .setTextAlignment(BarCodeBuilder.TEXT_ALIGN_CENTER)
+                .setStandardFormat(true)
                 .build();
         if (bitmap != null) {
             Log.d(TAG, "Zxing生成条码 宽度 = " + bitmap.getWidth() + "\t高度 = " + bitmap.getHeight());

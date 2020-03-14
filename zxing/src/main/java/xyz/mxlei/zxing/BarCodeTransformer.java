@@ -22,7 +22,7 @@ public class BarCodeTransformer {
         Paint paint = new Paint();
         paint.setAntiAlias(true);
         paint.setColor(Color.BLACK);
-        float fourCharWidth = adjustTextSize(paint, content.substring(0, 4), pieceWidth * 28);
+        float fourCharWidth = adjustTextSize(paint, content.substring(0, 4), pieceWidth * 28 * 0.8f);
         float oneCharHeight = paint.getFontMetrics().descent - paint.getFontMetrics().ascent;
         Bitmap dstBitmap = Bitmap.createBitmap(bitmap.getWidth(), (int) (bitmap.getHeight() + oneCharHeight / 2), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(dstBitmap);
@@ -92,7 +92,7 @@ public class BarCodeTransformer {
         Paint paint = new Paint();
         paint.setAntiAlias(true);
         paint.setColor(Color.BLACK);
-        float fiveCharWidth = adjustTextSize(paint, content.substring(1, 7), pieceWidth * 35 * 0.9f);
+        float fiveCharWidth = adjustTextSize(paint, content.substring(1, 7), pieceWidth * 35 * 0.95f);
         float oneCharWidth = fiveCharWidth / 5f;
         float oneCharHeight = paint.getFontMetrics().descent - paint.getFontMetrics().ascent;
 
@@ -131,7 +131,7 @@ public class BarCodeTransformer {
         Paint paint = new Paint();
         paint.setAntiAlias(true);
         paint.setColor(Color.BLACK);
-        float sixCharWidth = adjustTextSize(paint, content.substring(1, 7), pieceWidth * 75 * 0.9f);
+        float sixCharWidth = adjustTextSize(paint, content.substring(1, 7), pieceWidth * 75 * 0.7f);
         float oneCharWidth = sixCharWidth / 6f;
         float oneCharHeight = paint.getFontMetrics().descent - paint.getFontMetrics().ascent;
 
@@ -140,12 +140,12 @@ public class BarCodeTransformer {
         canvas.drawColor(Color.WHITE);
         canvas.drawBitmap(bitmap, oneCharWidth, 0, null);
         //去除底部多出线条
-        Bitmap whiteBitmap = Bitmap.createBitmap((int) Math.ceil(pieceWidth * 80), (int) Math.ceil(oneCharHeight), Bitmap.Config.ARGB_8888);
+        Bitmap whiteBitmap = Bitmap.createBitmap((int) Math.ceil(pieceWidth * 82), (int) Math.ceil(oneCharHeight), Bitmap.Config.ARGB_8888);
         Canvas whiteCanvas = new Canvas(whiteBitmap);
         whiteCanvas.drawColor(Color.WHITE);
         whiteCanvas.save();
         whiteCanvas.restore();
-        canvas.drawBitmap(whiteBitmap, oneCharWidth + pieceWidth * 14, dstBitmap.getHeight() - whiteBitmap.getHeight(), null);
+        canvas.drawBitmap(whiteBitmap, oneCharWidth + pieceWidth * 12, dstBitmap.getHeight() - whiteBitmap.getHeight(), null);
         //左边一位数字
         canvas.drawText(content.substring(0, 1), 0, dstBitmap.getHeight() - oneCharHeight / 4, paint);
         //中间6位数字

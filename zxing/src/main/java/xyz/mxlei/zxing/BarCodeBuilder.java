@@ -90,7 +90,7 @@ public class BarCodeBuilder {
         Paint paint = new Paint();
         paint.setAntiAlias(true);
         paint.setColor(Color.BLACK);
-        float textWidth = setTextSize(paint, dpToPx(16), bitmap.getWidth() * 0.8f, content);//文本宽度
+        float textWidth = setTextSize(paint, dpToPx(20), bitmap.getWidth() * 0.8f, content);//文本宽度
         float textHeight = textLocation == TEXT_LOCATION_NONE ? 0 :
                 paint.getFontMetrics().bottom -                 //文本高度
                         paint.getFontMetrics().top;
