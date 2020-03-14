@@ -27,7 +27,7 @@ allprojects {
          .build();						//生成条码Bitmap
 ```
 
-![UTOOLS1583217926225.png](http://yanxuan.nosdn.127.net/27dd5181bf347ecb8f050db8d394b80e.png)
+![](https://raw.githubusercontent.com/mxxlei/blog-pictures/master/img2020/20200314163233.png)
 
 支持的条码格式如下（也可以自己添加其他的格式）
 
@@ -56,7 +56,7 @@ allprojects {
 3. UPC-A
 4. UPC-E
 
-![UTOOLS1583218015230.png](http://yanxuan.nosdn.127.net/813075addf832e935cae5fc48435cf5f.png)
+![](https://raw.githubusercontent.com/mxxlei/blog-pictures/master/img2020/20200314163254.png)
 
 ## 3. 生成带LOGO的二维码
 
@@ -73,7 +73,7 @@ allprojects {
 
 提供仿照微信、支付宝的二维码扫描界面，可以直接跳转到Activity，然后监听扫描结果，也可以继承BaseCaptureActivity后自定义扫描界面。
 
-![](http://yanxuan.nosdn.127.net/0929337b7c3dc76aa5c527f387272c16.png)
+![](https://raw.githubusercontent.com/mxxlei/blog-pictures/master/img2020/20200314163313.png)
 
 ```java
 public static final int REQUEST_CODE = 12121;
